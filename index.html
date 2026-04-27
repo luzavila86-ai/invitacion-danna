@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación 15 Años - Danna Camila</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #020617, #000);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* Intro dorada */
+    .intro {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, #000, #020617);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      animation: fadeOut 3s forwards;
+      animation-delay: 2s;
+    }
+
+    .intro h1 {
+      font-size: 2em;
+      color: #facc15;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #facc15; }
+      to { text-shadow: 0 0 30px #fde68a; }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    /* Fondo estilo Van Gogh */
+    .stars::after {
+      content: "";
+      position: fixed;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,215,0,0.8), transparent 20%),
+                  radial-gradient(circle at 70% 40%, rgba(255,255,255,0.8), transparent 20%),
+                  radial-gradient(circle at 50% 80%, rgba(255,215,0,0.6), transparent 25%);
+      animation: swirl 25s linear infinite;
+      opacity: 0.6;
+      z-index: -1;
+    }
+
+    @keyframes swirl {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.1); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+
+    /* Estrella fugaz */
+    .shooting-star {
+      position: fixed;
+      top: -50px;
+      left: -50px;
+      width: 2px;
+      height: 100px;
+      background: linear-gradient(white, transparent);
+      animation: shooting 5s linear infinite;
+    }
+
+    @keyframes shooting {
+      0% { transform: translate(0,0); opacity:1 }
+      100% { transform: translate(800px,900px); opacity:0 }
+    }
+
+    .container { padding: 40px 20px; }
+
+    /* Nombre animado */
+    .paint-name {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid #facc15;
+      width: 0;
+      margin: auto;
+      animation: typing 4s steps(30, end) forwards, blink 0.7s infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    .card {
+      background: rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 30px;
+      margin: 20px auto;
+      max-width: 500px;
+      backdrop-filter: blur(12px);
+    }
+
+    .countdown { font-size: 1.4em; margin-top: 15px; }
+
+    iframe {
+      border-radius: 15px;
+      margin-top: 20px;
+      width: 100%;
+      height: 250px;
+      border: none;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 22px;
+      border-radius: 30px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover { transform: scale(1.1); box-shadow:0 0 15px #fff; }
+
+    .whatsapp { background: #25D366; }
+    .maps { background: #4285F4; }
+
+    form {
+      margin-top: 20px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 20px;
+      border: none;
+      background: #facc15;
+      font-weight: bold;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="intro"><h1>✨ Bienvenidos a una noche mágica ✨</h1></div>
+
+<div class="stars"></div>
+<div class="shooting-star"></div>
+
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3">
+</audio>
+
+<div class="container">
+  <h2>Bajo un cielo lleno de estrellas...</h2>
+  <h1 class="paint-name">Danna Camila Barrera Ávila</h1>
+
+  <div class="card">
+    <p>📅 1 de agosto de 2026</p>
+    <p>🕖 7:00 PM</p>
+
+    <div id="countdown"></div>
+
+    <iframe src="https://www.google.com/maps?q=Centro+Cultural+Casa+Claret+Bosa+Centro+Calle+63+Sur+%2380C-80+Bogota&output=embed"></iframe>
+
+    <a class="btn maps" href="https://www.google.com/maps/search/?api=1&query=Centro+Cultural+Casa+Claret+Bosa" target="_blank">Cómo llegar</a>
+
+    <a class="btn whatsapp" href="https://wa.me/573223371728" target="_blank">Confirmar</a>
+
+    <form onsubmit="sendWhatsApp(event)">
+      <input type="text" id="nombre" placeholder="Tu nombre" required>
+      <select id="personas">
+        <option>1 persona</option>
+        <option>2 personas</option>
+        <option>3 personas</option>
+      </select>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+
+<script>
+const eventDate = new Date("August 1, 2026 19:00:00").getTime();
+
+setInterval(()=>{
+  const now = new Date().getTime();
+  const d = eventDate-now;
+
+  const days=Math.floor(d/(1000*60*60*24));
+  const h=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+  const m=Math.floor((d%(1000*60*60))/(1000*60));
+  const s=Math.floor((d%(1000*60))/1000);
+
+  document.getElementById("countdown").innerHTML=`⏳ ${days}d ${h}h ${m}m ${s}s`;
+},1000);
+
+function sendWhatsApp(e){
+  e.preventDefault();
+  const n=document.getElementById("nombre").value;
+  const p=document.getElementById("personas").value;
+
+  window.open(`https://wa.me/573223371728?text=${encodeURIComponent(`Soy ${n} y confirmo ${p}`)}`);
+}
+</script>
+
+</body>
+</html> 
