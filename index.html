@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Mis 15 Años - DANNA CAMILA</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -16,10 +17,10 @@ body {
   background: black;
 }
 
-/* PORTADA */
+/* FONDO ESTRELLADO */
 .hero {
   height: 100vh;
-  background: url('https://upload.wikimedia.org/wikipedia/commons/e/ea/The_Starry_Night.JPG') no-repeat center center;
+  background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80') no-repeat center center;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -31,31 +32,47 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9));
 }
 
+/* CONTENIDO PORTADA */
 .hero-content {
   position: relative;
   z-index: 2;
 }
 
-.brush {
+.title {
   font-family: 'Playfair Display', serif;
-  font-size: 3em;
-  color: #facc15;
-  text-shadow: 0 0 15px gold;
+  font-size: 2.5em;
+  color: gold;
+  text-shadow: 0 0 20px gold;
 }
 
-/* EFECTO PINCEL */
-.paint {
-  font-size: 3em;
-  letter-spacing: 3px;
-  white-space: nowrap;
+/* EFECTO PINCEL REAL */
+.name {
+  font-size: 3.5em;
+  font-weight: bold;
+  background: linear-gradient(90deg, #d4af37, #ffd700, #fff2a8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
   overflow: hidden;
-  border-right: 3px solid gold;
-  width: 0;
-  margin: auto;
-  animation: escribir 4s steps(30) forwards, parpadeo 0.7s infinite;
+}
+
+.name::after {
+  content: "";
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://i.imgur.com/8QfQ9Zb.png');
+  background-size: cover;
+  animation: brush 3s forwards;
+}
+
+@keyframes brush {
+  to { left: 100%; }
 }
 
 .sub {
@@ -63,13 +80,12 @@ body {
   margin-top: 10px;
 }
 
-/* CONTENIDO */
+/* TARJETA */
 .card {
   padding: 40px 20px;
   background: radial-gradient(circle at top, #020617, #000);
 }
 
-/* BOTONES */
 .btn {
   display: inline-block;
   margin: 10px;
@@ -78,22 +94,12 @@ body {
   color: black;
   text-decoration: none;
   border-radius: 25px;
+  font-weight: bold;
 }
 
-/* CONTADOR */
 .countdown {
   font-size: 1.5em;
   margin-top: 20px;
-}
-
-/* ANIMACIONES */
-@keyframes escribir {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes parpadeo {
-  50% { border-color: transparent }
 }
 </style>
 </head>
@@ -103,9 +109,10 @@ body {
 <!-- PORTADA -->
 <section class="hero">
   <div class="overlay"></div>
+
   <div class="hero-content">
-    <h2 class="brush">Mis 15 Años</h2>
-    <h1 class="paint">DANNA CAMILA</h1>
+    <h2 class="title">Mis 15 Años</h2>
+    <h1 class="name">DANNA CAMILA</h1>
     <p class="sub">BARRERA AVILA</p>
   </div>
 </section>
@@ -148,32 +155,34 @@ Calle 63 Sur # 80C - 80
 
 <button class="btn" onclick="playMusic()">🎵 Activar música</button>
 
-<audio id="music" loop>
+<audio id="music" loop autoplay>
   <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mp3">
 </audio>
 
 </div>
 
 <script>
+// CONTADOR
 var countDownDate = new Date("Aug 1, 2026 19:00:00").getTime();
 
-var x = setInterval(function() {
+setInterval(function() {
   var now = new Date().getTime();
   var distance = countDownDate - now;
 
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  var d = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var s = Math.floor((distance % (1000 * 60)) / 1000);
 
   document.getElementById("countdown").innerHTML =
-  days + " días " + hours + "h " + minutes + "m " + seconds + "s ";
-
+  d + " días " + h + "h " + m + "m " + s + "s";
 }, 1000);
 
+// MÚSICA
 function playMusic() {
   document.getElementById("music").play();
 }
 </script>
+
 </body>
 </html> 
