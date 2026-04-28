@@ -3,130 +3,148 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Mis 15 Años - DANNA CAMILA</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  color: white;
-  text-align: center;
-  background: black;
+
+body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
+
+    /* 🎨 FONDO VAN GOGH REAL */
+    background: url('https://upload.wikimedia.org/wikipedia/commons/e/ea/The_Starry_Night.JPG') no-repeat center center/cover;
 }
 
-/* FONDO ESTRELLADO */
-.hero {
-  height: 100vh;
-  background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80') no-repeat center center;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+/* capa oscura elegante */
+.overlay{
+    background: rgba(0,0,0,0.65);
+    min-height:100vh;
+    padding:40px 20px;
 }
 
-.overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9));
+/* ⭐ estrellas animadas */
+.stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    pointer-events:none;
+    background: transparent;
 }
 
-/* CONTENIDO PORTADA */
-.hero-content {
-  position: relative;
-  z-index: 2;
+.stars::after{
+    content:"";
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    box-shadow:
+    100px 200px white,
+    200px 300px white,
+    300px 100px white,
+    400px 500px white,
+    600px 200px white,
+    800px 400px white,
+    900px 150px white;
+    animation: twinkle 2s infinite alternate;
 }
 
-.title {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5em;
-  color: gold;
-  text-shadow: 0 0 20px gold;
+@keyframes twinkle{
+    from{opacity:0.3;}
+    to{opacity:1;}
 }
 
-/* EFECTO PINCEL REAL */
-.name {
-  font-size: 3.5em;
-  font-weight: bold;
-  background: linear-gradient(90deg, #d4af37, #ffd700, #fff2a8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  position: relative;
-  overflow: hidden;
+/* ✨ título */
+h1{
+    font-family:'Playfair Display', serif;
+    font-size:50px;
+    color:gold;
+    margin-top:50px;
 }
 
-.name::after {
-  content: "";
-  position: absolute;
-  left: -100%;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: url('https://i.imgur.com/8QfQ9Zb.png');
-  background-size: cover;
-  animation: brush 3s forwards;
+/* 🎨 efecto pincel */
+.nombre{
+    font-size:48px;
+    font-weight:bold;
+    text-transform:uppercase;
+    display:inline-block;
+    overflow:hidden;
+    border-right:3px solid gold;
+    white-space:nowrap;
+    animation: escribir 4s steps(20), blink .7s infinite;
 }
 
-@keyframes brush {
-  to { left: 100%; }
+@keyframes escribir{
+    from{width:0}
+    to{width:100%}
 }
 
-.sub {
-  letter-spacing: 5px;
-  margin-top: 10px;
+@keyframes blink{
+    50%{border-color:transparent}
 }
 
-/* TARJETA */
-.card {
-  padding: 40px 20px;
-  background: radial-gradient(circle at top, #020617, #000);
+.sub{
+    letter-spacing:4px;
+    margin-top:10px;
 }
 
-.btn {
-  display: inline-block;
-  margin: 10px;
-  padding: 12px 25px;
-  background: gold;
-  color: black;
-  text-decoration: none;
-  border-radius: 25px;
-  font-weight: bold;
+/* 🎶 botón */
+.boton{
+    margin-top:30px;
+    padding:15px 30px;
+    border:none;
+    border-radius:30px;
+    background:gold;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-.countdown {
-  font-size: 1.5em;
-  margin-top: 20px;
+.boton:hover{
+    transform:scale(1.1);
 }
+
+/* texto */
+.info{
+    max-width:600px;
+    margin:40px auto;
+    line-height:1.6;
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- PORTADA -->
-<section class="hero">
-  <div class="overlay"></div>
+<div class="stars"></div>
 
-  <div class="hero-content">
-    <h2 class="title">Mis 15 Años</h2>
-    <h1 class="name">DANNA CAMILA</h1>
-    <p class="sub">BARRERA AVILA</p>
-  </div>
-</section>
+<div class="overlay">
 
-<!-- CONTENIDO -->
-<div class="card">
+<h1>Mis 15 Años</h1>
 
-<p>📅 1 de agosto de 2026</p>
-<p>🕖 7:00 PM</p>
+<div class="nombre">DANNA CAMILA</div>
+<div class="sub">BARRERA AVILA</div>
+
+<div class="info">
+<p>
+Bajo una noche llena de estrellas, queremos celebrar esta fecha tan especial contigo.
+</p>
 
 <p>
-Bajo una noche llena de estrellas, queremos celebrar esta fecha tan especial contigo.<br><br>
 Tenemos el honor de invitarte a la celebración de los 15 años de<br>
-<strong>DANNA CAMILA BARRERA AVILA</strong>
+<b>DANNA CAMILA BARRERA AVILA</b>
+</p>
+
+<p>
+📅 1 de agosto de 2026<br>
+🕖 7:00 PM
 </p>
 
 <p>
@@ -141,46 +159,30 @@ Centro Cultural Casa Claret - Bosa Centro<br>
 Calle 63 Sur # 80C - 80
 </p>
 
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Casa+Claret+Bosa+Centro">Ver ubicación</a>
+<button class="boton" onclick="window.open('https://maps.google.com')">
+Ver ubicación
+</button>
 
-<p style="margin-top:20px; font-style:italic;">
+<p style="margin-top:40px; font-style:italic;">
 ✨ Tu presencia hará esta noche aún más especial ✨
 </p>
 
-<div class="countdown" id="countdown"></div>
-
-<a class="btn" href="https://wa.me/573223371728">Confirmar asistencia</a>
-
-<br><br>
-
-<button class="btn" onclick="playMusic()">🎵 Activar música</button>
-
-<audio id="music" loop autoplay>
-  <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mp3">
-</audio>
+<button class="boton" onclick="activarMusica()">
+🎵 Activar música
+</button>
 
 </div>
 
+</div>
+
+<!-- 🎵 música -->
+<audio id="musica" loop>
+<source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mp3">
+</audio>
+
 <script>
-// CONTADOR
-var countDownDate = new Date("Aug 1, 2026 19:00:00").getTime();
-
-setInterval(function() {
-  var now = new Date().getTime();
-  var distance = countDownDate - now;
-
-  var d = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var s = Math.floor((distance % (1000 * 60)) / 1000);
-
-  document.getElementById("countdown").innerHTML =
-  d + " días " + h + "h " + m + "m " + s + "s";
-}, 1000);
-
-// MÚSICA
-function playMusic() {
-  document.getElementById("music").play();
+function activarMusica(){
+    document.getElementById("musica").play();
 }
 </script>
 
