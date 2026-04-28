@@ -10,19 +10,12 @@
 <style>
 body {
   margin: 0;
-  padding: 0;
-  background: url('https://upload.wikimedia.org/wikipedia/commons/e/ea/The_Starry_Night.JPG') no-repeat center center/cover;
-  background-size: cover;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  text-align: center;
+  background: black;
 }
-body::after {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: url("https://www.transparenttextures.com/patterns/stardust.png");
-  opacity: 0.5;
-}   
+
 /* PORTADA */
 .hero {
   height: 100vh;
@@ -32,12 +25,13 @@ body::after {
   align-items: center;
   justify-content: center;
   position: relative;
-} 
+}
+
 .overlay {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
 }
 
 .hero-content {
@@ -45,38 +39,40 @@ body::after {
   z-index: 2;
 }
 
-.brush-title {
+.brush {
+  font-family: 'Playfair Display', serif;
   font-size: 3em;
   color: #facc15;
-  font-family: 'Playfair Display', serif;
-  text-shadow: 0 0 15px gold, 0 0 30 
-
-.big15 {
-  font-size: 2em;
   text-shadow: 0 0 15px gold;
 }
 
-.main-name {
-  font-size: 3.5em;
-  letter-spacing: 4px;
-  color: white;
-  text-shadow: 0 0 20px rgba(255,255,255,0.8);
-} 
-
-.sub-name {
-  letter-spacing: 5px;
+/* EFECTO PINCEL */
+.paint {
+  font-size: 3em;
+  letter-spacing: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid gold;
+  width: 0;
+  margin: auto;
+  animation: escribir 4s steps(30) forwards, parpadeo 0.7s infinite;
 }
 
-/* TARJETA */
+.sub {
+  letter-spacing: 5px;
+  margin-top: 10px;
+}
+
+/* CONTENIDO */
 .card {
   padding: 40px 20px;
   background: radial-gradient(circle at top, #020617, #000);
 }
 
-/* BOTÓN */
+/* BOTONES */
 .btn {
   display: inline-block;
-  margin-top: 20px;
+  margin: 10px;
   padding: 12px 25px;
   background: gold;
   color: black;
@@ -89,6 +85,16 @@ body::after {
   font-size: 1.5em;
   margin-top: 20px;
 }
+
+/* ANIMACIONES */
+@keyframes escribir {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes parpadeo {
+  50% { border-color: transparent }
+}
 </style>
 </head>
 
@@ -98,9 +104,9 @@ body::after {
 <section class="hero">
   <div class="overlay"></div>
   <div class="hero-content">
-    <h2 class="brush-title">Mis <span class="big15">15</span> Años</h2>
-    <h1 class="main-name">DANNA CAMILA</h1>
-    <p class="sub-name">BARRERA AVILA</p>
+    <h2 class="brush">Mis 15 Años</h2>
+    <h1 class="paint">DANNA CAMILA</h1>
+    <p class="sub">BARRERA AVILA</p>
   </div>
 </section>
 
@@ -110,7 +116,7 @@ body::after {
 <p>📅 1 de agosto de 2026</p>
 <p>🕖 7:00 PM</p>
 
-<p style="margin-top:15px;">
+<p>
 Bajo una noche llena de estrellas, queremos celebrar esta fecha tan especial contigo.<br><br>
 Tenemos el honor de invitarte a la celebración de los 15 años de<br>
 <strong>DANNA CAMILA BARRERA AVILA</strong>
@@ -121,11 +127,14 @@ Tenemos el honor de invitarte a la celebración de los 15 años de<br>
 Formal elegante (damas y caballeros)<br>
 🚫 Evitar color azul oscuro
 </p>
-  <a href="https://maps.google.com/?q=TU_UBICACION" target="_blank">
-  <button style="padding:10px 20px; border-radius:10px; border:none; background:#ff69b4; color:white;">
-    📍 Ver ubicación
-  </button>
-</a> 
+
+<p>
+📍 Lugar:<br>
+Centro Cultural Casa Claret - Bosa Centro<br>
+Calle 63 Sur # 80C - 80
+</p>
+
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Casa+Claret+Bosa+Centro">Ver ubicación</a>
 
 <p style="margin-top:20px; font-style:italic;">
 ✨ Tu presencia hará esta noche aún más especial ✨
@@ -166,6 +175,5 @@ function playMusic() {
   document.getElementById("music").play();
 }
 </script>
-
 </body>
 </html> 
